@@ -1,7 +1,7 @@
 # 基于 alpine镜像构建
 FROM alpine:latest
 # 镜像维护者的信息
-LABEL MAINTAINER = 'crper@outlook.com(https://github.com/crper)'
+LABEL MAINTAINER = 'lianxw'
 # 基础环境构建
 # - 更新源
 # - 安装基础环境包
@@ -22,21 +22,8 @@ WORKDIR /yapi/vendors
 COPY config.json /yapi/
 # 复制执行脚本到容器的执行目录
 COPY entrypoint.sh /usr/local/bin/
-# 写好的vim配置文件复制进去
-COPY .vimrc /root/
 # 向外暴露的端口
 EXPOSE 3000
 
 # 配置入口为bash shell
 ENTRYPOINT ["entrypoint.sh"]
-
-
-# `vim` : 编辑神器
-# `tar` : 解压缩
-# `make`: 编译依赖的
-# `gcc`:  GNU编译器套装
-# `python`: `python python-dev py-pip`这三个包包括了基本开发环境
-# `curl` 可以测试连接也能下载内容的命令行工具
-# `git` : 不用说了
-# `nodejs` : node
-# `nodejs-current-npm` : `alpine`Linux版本需要依赖这个版本,才能让`npm`识别到
